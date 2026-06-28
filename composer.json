@@ -1,0 +1,25 @@
+{
+    "name": "bojaghi/boilerplate",
+    "description": "Bojaghi boilerplate",
+    "homepage": "https://github.com/bojaghi/boilerplate",
+    "type": "library",
+    "license": "GPL-2.0-or-later",
+    "autoload": {
+        "psr-4": {
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "authors": [
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+    },
+    "scripts": {
+    },
+    "version": "1.0.7"
+}
