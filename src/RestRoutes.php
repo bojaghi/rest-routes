@@ -7,8 +7,10 @@ use Bojaghi\Contract\Module;
 use Bojaghi\Helper\Helper;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use WP_Error;
 use WP_HTTP_Response;
+use WP_REST_Controller;
 use WP_REST_Request;
 
 class RestRoutes implements Module
@@ -73,6 +75,23 @@ class RestRoutes implements Module
     public function register(): void
     {
         foreach (Helper::loadConfig($this->config) as $config) {
+            // When $config is FQCN, and it extends WP_REST_Controller
+            if (is_string($config) && class_exists($config) && is_a($config, WP_REST_Controller::class)) {
+                if ($this->container) {
+                    try {
+                        $instance = $this->container->get($config);
+                    } catch (NotFoundExceptionInterface|ContainerExceptionInterface $e) {
+                        $instance = null;
+                    }
+                } else {
+                    $instance = new $config();
+                }
+                if ($instance) {
+                    $instance->register_routes();
+                }
+                continue;
+            }
+
             $config = wp_parse_args($config, [
                 'namespace' => '',
                 'route'     => '',
