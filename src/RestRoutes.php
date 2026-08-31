@@ -76,7 +76,7 @@ class RestRoutes implements Module
     {
         foreach (Helper::loadConfig($this->config) as $config) {
             // When $config is FQCN, and it extends WP_REST_Controller
-            if (is_string($config) && class_exists($config) && is_a($config, WP_REST_Controller::class)) {
+            if (is_string($config) && class_exists($config) && is_subclass_of($config, WP_REST_Controller::class)) {
                 if ($this->container) {
                     try {
                         $instance = $this->container->get($config);
