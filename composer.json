@@ -30,7 +30,7 @@
     "phpcs": "phpcs",
     "phpcbf": "phpcbf"
   },
-  "version": "2.0.0",
+  "version": "2.0.0-p.1",
   "config": {
     "allow-plugins": {
       "alleyinteractive/composer-wordpress-autoloader": true,
@@ -40,10 +40,10 @@
   "extra": {
     "wordpress-autoloader": {
       "autoload": {
-        "Bojaghi\\Rest_Routes\\": "inc/"
+        "Bojaghi\\RestRoutes\\": "inc/"
       },
       "autoload-dev": {
-        "Bojaghi\\Rest_Routes\\": "tests/"
+        "Bojaghi\\RestRoutes\\": "tests/"
       },
       "inject": true
     }

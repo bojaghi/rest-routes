@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.0-p.1
+
+2026-10-05
+
+- Fix namespace error.
+
 ## 2.0.0
 
 2026-09-23
